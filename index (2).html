@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VibeLink</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0c0f;
+      --surface: #1a1b1e;
+      --text: #f3f4f6;
+      --muted: #9ca3af;
+      --border: #2e2f32;
+      --accent: #3b82f6;
+      --radius: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      align-items: start;
+      padding: 4rem 2rem;
+      min-height: 100vh;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 3rem;
+      width: 100%;
+      max-width: 1080px;
+    }
+
+    .main {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .title-block h1 {
+      font-size: 1.75rem;
+      font-weight: 600;
+    }
+
+    .title-block p {
+      color: var(--muted);
+      margin-top: 0.5rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    label {
+      font-size: 0.875rem;
+      color: var(--muted);
+    }
+
+    input[type="text"] {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: 1rem;
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius);
+      transition: border 0.2s ease;
+    }
+
+    input[type="text"]:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .actions {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+    }
+
+    .button {
+      flex: 1;
+      padding: 0.7rem 1rem;
+      font-size: 0.95rem;
+      font-weight: 500;
+      border-radius: var(--radius);
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .button.primary {
+      background: var(--accent);
+      color: white;
+    }
+
+    .button.primary:hover {
+      background: #2563eb;
+    }
+
+    .button.outline {
+      background: transparent;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+    }
+
+    .button.outline:hover {
+      background: rgba(59, 130, 246, 0.05);
+    }
+
+    .sidebar h3 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--muted);
+    }
+
+    .room-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .room {
+      padding: 0.6rem 0.75rem;
+      font-size: 0.95rem;
+      border-radius: var(--radius);
+      color: var(--text);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .room:hover {
+      background: #23262b;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <section class="main">
+      <div class="title-block">
+        <h1>VibeLink</h1>
+        <p>Join or create real-time spaces for productive technical collaboration.</p>
+      </div>
+
+      <div class="form-group">
+        <label for="room-input">Room name</label>
+        <input id="room-input" type="text" placeholder="e.g. search-infra" />
+        <div class="actions">
+          <button class="button primary" onclick="joinRoom()">Join</button>
+          <button class="button outline" onclick="createRoom()">Create</button>
+        </div>
+      </div>
+    </section>
+
+    <aside class="sidebar">
+      <h3>Active Rooms</h3>
+      <div class="room-list">
+        <div class="room" onclick="joinRoom('api-guild')">#api-guild</div>
+        <div class="room" onclick="joinRoom('ml-pipeline')">#ml-pipeline</div>
+        <div class="room" onclick="joinRoom('devtools')">#devtools</div>
+        <div class="room" onclick="joinRoom('feature-flags')">#feature-flags</div>
+        <div class="room" onclick="joinRoom('web-core')">#web-core</div>
+      </div>
+    </aside>
+  </div>
+
+  <script>
+    function joinRoom(roomName) {
+      const input = document.getElementById('room-input');
+      const name = roomName || input.value.trim();
+      if (name) {
+        window.location.href = `/chat/${encodeURIComponent(name)}/`;
+      } else {
+        alert('Please enter a room name.');
+      }
+    }
+
+    function createRoom() {
+      const roomName = document.getElementById('room-input').value.trim();
+      if (roomName) {
+        window.location.href = `/create/${encodeURIComponent(roomName)}/`;
+      } else {
+        alert('Enter a name for your new room.');
+      }
+    }
+
+    document.getElementById('room-input').addEventListener('keypress', function (e) {
+      if (e.key === 'Enter') joinRoom();
+    });
+  </script>
+</body>
+</html>

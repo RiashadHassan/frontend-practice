@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+</head>
+<style>
+    .main-container {
+        min-height: 600px;
+        border: 8px solid;
+        display: flex;
+        flex-direction: column;
+        /* flex-wrap: wrap; */
+
+        align-items: center;
+        justify-content: center;
+    }
+    .greet-bar {
+        min-height: 100px;
+        width: 1050px;
+        margin-bottom: 20px;
+        border-radius: 12px;
+
+        font-size: large;
+        color: whitesmoke;
+        background-color: salmon;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* position:sticky;
+        top: 0;
+        z-index: 10; */
+    }
+    /* .greet-bar:hover{ */
+        /* background-color: transparent; */
+    /* } */
+    .rows-wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 20px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .box {
+        margin: 20px;
+        border: 8px;
+        border-radius: 50px;
+        height: 200px;
+        width: 200px;
+        background-color: deeppink;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        font-size: 50pt;
+    }
+</style>
+
+<body>
+    <div class="main-container">
+        <div class="greet-bar">
+            <h2>Join a room to start talking with other people!</h2>
+        </div>
+        <div class="rows-wrapper">
+            <div class="row" id="boxes-from-api">
+            </div>
+
+            <div class="row" id="fixed-boxes">
+                <div class="box"> <strong>A</strong></div>
+                <div class="box"> <strong>B</strong></div>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        const numOfItems = 50;
+
+        const container = document.querySelector("#boxes-from-api");
+        for (let item = 1; item <= numOfItems; item++) {
+            const box = document.createElement("div");
+            box.className = "box";
+            box.textContent = item;
+            container.appendChild(box);
+        }
+    </script>
+
+
+</body>
+
+</html>

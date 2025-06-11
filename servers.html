@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Projectile Chat - Servers</title>
+  <style>
+    body { font-family: sans-serif; background: #23272a; color: #fff; }
+    .container { max-width: 600px; margin: 40px auto; background: #2c2f33; padding: 2em; border-radius: 8px; }
+    .server { background: #36393f; margin: 0.5em 0; padding: 1em; border-radius: 6px; cursor: pointer; transition: background 0.2s; }
+    .server:hover { background: #5865f2; }
+    .logout { float: right; color: #ff5555; cursor: pointer; }
+    .form-row { display: flex; gap: 1em; }
+    input, button { padding: 0.5em; border-radius: 4px; border: none; }
+    button { background: #7289da; color: #fff; font-weight: bold; cursor: pointer; }
+    .error { color: #ff5555; margin-top: 0.5em; }
+    .next-btn { margin: 1em auto 0 auto; display: block; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <span class="logout" onclick="logout()">Logout</span>
+    <h2>All Servers</h2>
+    <div id="server-list"></div>
+    <button id="next-page" class="next-btn" style="display:none;">Next Page</button>
+    <div class="error" id="join-error"></div>
+  </div>
+  <script>
+    const API_BASE = "http://0.0.0.0:8000";
+    const token = localStorage.getItem('token');
+    if (!token) window.location = 'index.html';
+
+    let lastSearchAfter = null;
+
+    // Load servers, optionally with search_after params
+    async function loadServers(searchAfter = null) {
+      document.getElementById('server-list').innerHTML = 'Loading...';
+      document.getElementById('join-error').textContent = '';
+      let url = `${API_BASE}/api/v1/search/servers/`;
+      if (searchAfter && searchAfter.uid && searchAfter.date) {
+        url += `?sau=${encodeURIComponent(searchAfter.uid)}&sad=${encodeURIComponent(searchAfter.date)}`;
+      }
+      try {
+        const res = await fetch(url, {
+          headers: { 'Authorization': 'Bearer ' + token }
+        });
+        if (!res.ok) throw new Error('Failed to fetch servers');
+        const data = await res.json();
+        const servers = data.results || data;
+        const list = document.getElementById('server-list');
+        list.innerHTML = '';
+        if (servers.length === 0) {
+          list.innerHTML = '<div>No servers found.</div>';
+        }
+        servers.forEach(s => {
+          const div = document.createElement('div');
+          div.className = 'server';
+          div.textContent = s.name + (s.uid ? ` (${s.uid})` : '');
+          div.onclick = () => joinServer(s.uid);
+          list.appendChild(div);
+        });
+
+        // Handle next page button
+        if (data.search_after && data.search_after.uid && data.search_after.date) {
+          lastSearchAfter = data.search_after;
+          document.getElementById('next-page').style.display = '';
+        } else {
+          lastSearchAfter = null;
+          document.getElementById('next-page').style.display = 'none';
+        }
+      } catch (err) {
+        document.getElementById('server-list').innerHTML = '<div style="color:#ff5555;">Failed to load servers.</div>';
+        document.getElementById('next-page').style.display = 'none';
+      }
+    }
+
+    // Join server by creating a member if not already, then redirect
+    async function joinServer(uid) {
+      document.getElementById('join-error').textContent = '';
+      try {
+        const res = await fetch(`${API_BASE}/api/v1/servers/${uid}/members/`, {
+          method: 'POST',
+          headers: { 'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json' },
+          body: JSON.stringify({}) // or add required fields if your API expects them
+        });
+        if (!res.ok) {
+          const errData = await res.json().catch(() => ({}));
+          throw new Error(errData.detail || 'Failed to join server. You may already be a member.');
+        }
+        window.location = `server.html?uid=${uid}`;
+      } catch (err) {
+        document.getElementById('join-error').textContent = err.message;
+      }
+    }
+    document.getElementById('next-page').onclick = function() {
+      if (lastSearchAfter) {
+        loadServers(lastSearchAfter);
+      }
+    };
+
+    function logout() {
+      localStorage.removeItem('token');
+      window.location = 'index.html';
+    }
+
+    // Initial load
+    loadServers();
+  </script>
+</body>
+</html>

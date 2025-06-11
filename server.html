@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Projectile Chat - Server</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #23272a;
+      color: #fff;
+    }
+
+    .layout {
+      display: flex;
+      height: 100vh;
+    }
+
+    .sidebar {
+      width: 80px;
+      background: #202225;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1em 0;
+      gap: 1em;
+    }
+
+    .sidebar .circle {
+      width: 48px;
+      height: 48px;
+      background: #36393f;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5em;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .sidebar .circle:hover {
+      background: #5865f2;
+    }
+
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: row;
+      background: #36393f;
+    }
+
+    .channels {
+      width: 220px;
+      background: #2f3136;
+      padding: 1em 0.5em;
+      border-right: 1px solid #23272a;
+      overflow-y: auto;
+    }
+
+    .channels h3 {
+      margin: 0.5em 0 0.5em 0.5em;
+      font-size: 1em;
+      color: #b9bbbe;
+      letter-spacing: 1px;
+    }
+
+    .category {
+      margin: 0.5em 0;
+      padding: 0.5em 1em;
+      border-radius: 4px;
+      background: #36393f;
+      color: #fff;
+      cursor: pointer;
+      font-size: 1em;
+      transition: background 0.2s;
+    }
+
+    .category:hover {
+      background: #5865f2;
+    }
+
+    .content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 1.5em;
+      overflow-y: auto;
+    }
+
+    .header {
+      font-size: 1.3em;
+      font-weight: bold;
+      margin-bottom: 0.5em;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .members {
+      margin-top: 1em;
+      background: #2f3136;
+      border-radius: 6px;
+      padding: 1em;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5em;
+    }
+
+    .member {
+      background: #5865f2;
+      color: #fff;
+      padding: 0.4em 1em;
+      border-radius: 4px;
+      font-size: 0.95em;
+      margin: 0.2em 0;
+    }
+
+    .logout,
+    .back {
+      color: #ff5555;
+      cursor: pointer;
+      font-size: 0.95em;
+      margin-left: 1em;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 700px) {
+      .channels {
+        display: none;
+      }
+
+      .main {
+        flex-direction: column;
+      }
+
+      .content {
+        padding: 1em;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="layout">
+    <div class="sidebar">
+      <div class="circle" title="Back" onclick="window.location='servers.html'">&#8592;</div>
+      <div class="circle" title="Logout" onclick="logout()">&#128274;</div>
+    </div>
+    <div class="main">
+      <div class="channels">
+        <h3>Categories</h3>
+        <div id="category-list"></div>
+      </div>
+      <div class="content">
+        <div class="header">
+          <span id="server-name"></span>
+        </div>
+        <h3>Members</h3>
+        <div class="members" id="member-list"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const API_BASE = "http://localhost:8000";
+    const token = localStorage.getItem('token');
+    if (!token) window.location = 'index.html';
+
+    const params = new URLSearchParams(window.location.search);
+    const serverUid = params.get('uid');
+
+    async function loadServer() {
+      try {
+        const res = await fetch(`${API_BASE}/api/v1/servers/${serverUid}/`, {
+          headers: { 'Authorization': 'Bearer ' + token }
+        });
+        if (!res.ok) throw new Error("Server not found");
+        const server = await res.json();
+        document.getElementById('server-name').textContent = server.name + ' (' + server.uid + ')';
+      } catch (err) {
+        document.getElementById('server-name').textContent = "Server not found";
+      }
+    }
+
+    async function loadCategories() {
+      try {
+        const res = await fetch(`${API_BASE}/api/v1/servers/${serverUid}/categories/`, {
+          headers: { 'Authorization': 'Bearer ' + token }
+        });
+        if (!res.ok) throw new Error("No categories");
+        const data = await res.json();
+        const categories = data.results || data;  // support both paginated and flat
+        const list = document.getElementById('category-list');
+        list.innerHTML = '';
+
+        if (categories.length === 0) {
+          list.innerHTML = "<div style='color:#ff5555'>No categories found.</div>";
+          return;
+        }
+
+        categories.forEach(c => {
+          const div = document.createElement('div');
+          div.className = 'category';
+          div.textContent = c.name;
+          list.appendChild(div);
+        });
+      } catch (err) {
+        document.getElementById('category-list').innerHTML = "<div style='color:#ff5555'>No categories found.</div>";
+      }
+    }
+
+
+    async function loadMembers() {
+      try {
+        const res = await fetch(`${API_BASE}/api/v1/servers/${serverUid}/members/`, {
+          headers: { 'Authorization': 'Bearer ' + token }
+        });
+        if (!res.ok) throw new Error("No members");
+        const data = await res.json();
+        const members = data.results || data;
+        const list = document.getElementById('member-list');
+        list.innerHTML = '';
+        members.forEach(m => {
+          const div = document.createElement('div');
+          div.className = 'member';
+          div.textContent = m.user_uid; // Show user UID since it's all you have
+          list.appendChild(div);
+        });
+      } catch (err) {
+        document.getElementById('member-list').innerHTML = "<div style='color:#ff5555'>No members found.</div>";
+      }
+    }
+
+    function logout() {
+      localStorage.removeItem('token');
+      window.location = 'index.html';
+    }
+
+    loadServer();
+    loadCategories();
+    loadMembers();
+  </script>
+</body>
+
+</html>
