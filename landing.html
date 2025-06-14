@@ -7,237 +7,41 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-    <title>Document</title>
+    <link rel="stylesheet" href="css/landing.css" />
+    <title>ChatSphere</title>
   </head>
-  <style>
-    :root {
-      --main-bg: black;
-      --pane-padding: 5px 42px;
-    }
-
-    body {
-      font-family: "Inter", sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-      background-color: var(--main-bg);
-    }
-    .main-container {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-
-      /* background-color: #000000; */
-
-      max-width: 700px;
-      width: 100%;
-
-      box-sizing: border-box;
-    }
-
-    .header-wrapper {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      align-content: center;
-    }
-
-    .primary-header-text h2 {
-      margin: 15px 0px 0px 0px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      font-size: 35px;
-      color: white;
-    }
-
-    .secondary-header-text p {
-      margin: 7px 0px 25px 0px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      font-size: 20px;
-      color: rgb(145, 141, 141);
-    }
-
-    .input-wrapper {
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      align-content: center;
-
-      width: 80%;
-      min-height: 50px;
-      min-width: 200px;
-      max-width: 650px;
-
-      border: 1px solid rgb(44, 42, 42);
-      border-radius: 7px;
-      box-sizing: border-box;
-    }
-
-    .input-form {
-      margin: 0px 20px 0px 20px;
-      width: 80%;
-    }
-
-    .input-form input {
-      border: none;
-      outline: none;
-      border-radius: 5px;
-      /*don't show the border outline when typing something*/
-      width: 100%;
-      box-sizing: border-box;
-      font-size: 20px;
-      background-color: rgb(0, 0, 0);
-      color:#ffffff;
-    }
-
-    .join-create-wrapper {
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      margin: 20px;
-      gap: 20px;
-      width: 80%;
-    }
-
-    .join-box {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      /* background-color: #3b82f6; */
-      color: white;
-
-      width: 50%;
-      min-width: 150px;
-      max-width: 325px;
-
-      box-sizing: border-box;
-      border: 1px solid grey;
-      border-radius: 10px;
-    }
-
-    .create-box {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      background-color: rgb(32, 31, 31);
-      color: white;
-
-      width: 50%;
-      min-width: 150px;
-      max-width: 325px;
-
-      box-sizing: border-box;
-      border: 1px solid rgb(90, 88, 88);
-      border-radius: 10px;
-    }
-    .discover-section {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      width: 90%;
-      /* max-width: 650px; */
-    }
-    .discover-text p {
-      font-size: 20px;
-      color: rgb(145, 141, 141);
-    }
-    .server-categories {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-
-      width: 100%;
-      max-width: 90%;
-
-      gap: 15px;
-    }
-    .category-box {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      height: 60px;
-      width: 31%;
-      color: rgb(124, 124, 124);
-      border: 1px solid rgb(49, 45, 45);
-      border-radius: 12px;
-    }
-    .join-box:hover {
-      opacity: 0.7;
-      transition: 0.2s;
-    }
-  </style>
-
   <body>
-    <div class="main-container">
-      <div class="header-wrapper">
+    <main class="main-container">
+      <header class="header-wrapper">
         <div class="header-icon">
-          <i
-            class="fas fa-comment-alt"
-            style="color: #ffffff; font-size: 45px"
-          ></i>
+          <i class="fas fa-comment-alt"></i>
         </div>
-        <div class="primary-header-text">
-          <h2>ChatSphere</h2>
-        </div>
-        <div class="secondary-header-text">
-          <p>Connect with clarity, chat with ease</p>
-        </div>
-      </div>
-      <div class="input-wrapper">
-        <div class="input-sign">
-          <i
-            class="fas fa-hashtag"
-            style="color: #ffffff; font-size: 20px; margin-left: 15px"
-          ></i>
-        </div>
-        <div class="input-form">
-          <input
-            type="text"
-            name="server-name"
-            id="server-name-input"
-            placeholder="Enter a server name"
-          />
-        </div>
-      </div>
-      <div class="join-create-wrapper">
-        <div class="join-box">
-          <p>Join</p>
-        </div>
-        <div class="create-box">
-          <p>Create</p>
-        </div>
-      </div>
-      <div class="discover-section">
-        <div class="discover-text">
-          <p>Discover Servers</p>
-        </div>
+        <h2 class="primary-header-text">ChatSphere</h2>
+        <p class="secondary-header-text">Connect with clarity, chat with ease</p>
+      </header>
+
+      <section class="input-wrapper">
+        <i class="fas fa-hashtag input-sign"></i>
+        <input
+          type="text"
+          name="server-name"
+          id="server-name-input"
+          placeholder="Enter a server name"
+          class="input-form"
+        />
+      </section>
+
+      <section class="join-create-wrapper">
+        <button class="join-box">Join</button>
+        <button class="create-box">Create</button>
+      </section>
+
+      <section class="discover-section">
+        <p class="discover-text">Discover Servers</p>
         <div class="server-categories"></div>
-      </div>
-    </div>
-    <script>
-      //just static data
-      const numOfCategories = 6;
-      const categories = document.querySelector(".server-categories");
-      for (let i = 0; i < numOfCategories; i++) {
-        category = document.createElement("div");
-        category.className = "category-box";
-        category.textContent = "Category " + i;
-        categories.appendChild(category);
-      }
-    </script>
+      </section>
+    </main>
+
+    <script src="js/landing.js"></script>
   </body>
 </html>
