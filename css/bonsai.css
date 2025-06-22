@@ -1,0 +1,134 @@
+:root {
+    font-size: 16px;
+    --primary-color: #00b289;
+    --secondary-font-family: 'Proximanova opt', sans-serif;
+    --secondary-font-color: #4c525a;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+
+    height: 100vh;
+    overflow: auto;
+    box-sizing: border-box;
+}
+
+header {
+    padding: 0.7rem 6.5rem;
+}
+nav{
+    position: sticky;
+    top: 0;
+}
+nav,
+.nav-links,
+.nav-link-item,
+.login-register {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+}
+
+.site-logo {
+    height: 1.8rem;
+    width: auto;
+    margin-right: 8rem;
+}
+
+.nav-links {
+    color: var(--secondary-font-color);
+
+    font-size: 0.9rem;
+    font-family: var(--secondary-font-family);
+
+    padding-right: 1rem;
+    gap: 1.2rem;
+}
+
+.nav-link-item {
+    padding: 1rem;
+}
+
+.nav-link-item:hover {
+    cursor: pointer;
+}
+
+.dropdown-nav-link {
+    transition: color 0.2s;
+}
+
+.dropdown-nav-link:hover {
+    color: black;
+}
+
+.login-register {
+    gap: 0.8rem;
+}
+
+.login-button,
+.start-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 0.65rem;
+    font-weight: 700;
+    font-family: var(--secondary-font-family);
+
+    cursor: pointer;
+
+}
+
+.login-button {
+    min-height: 2.2rem;
+
+    background-color: white;
+    color: var(--primary-color);
+
+    padding: 0.1rem 1rem;
+    border: 1px solid var(--primary-color);
+    border-radius: 0.2rem;
+
+    transition: background-color 0.1s;
+}
+
+.login-button:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+
+.start-button {
+    min-height: 2.2rem;
+
+    background-color: var(--primary-color);
+    color: white;
+
+    padding: 0.1rem 1rem;
+    border: 1px solid var(--primary-color);
+    border-radius: 0.2rem;
+
+    transition: background-color 0.1s;
+}
+
+.start-button:hover {
+    background-color: #068567;
+}
+.backdrop-container{
+    box-sizing: border-box;
+    overflow:hidden;
+
+}
+.backdrop-blue {
+    height: 180vh;
+    width: 70vw;
+
+    background-color: var(--primary-color);
+    opacity: 0.18;
+
+    transform: translate(270px, -590px) rotate(-40.5deg);
+
+    z-index: -1;
+}
