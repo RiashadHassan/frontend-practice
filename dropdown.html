@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropdown</title>
+    <style>
+        nav,
+        .nav-links,
+        .login-register {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav {
+            padding: 1rem;
+        }
+
+        .nav-link-item,
+        .login-register-item {
+            padding: 0 2rem;
+        }
+
+        .dropdown-toggle {
+            cursor: pointer;
+            position: relative;
+        }
+
+        .country-dropdown-menu,
+        .books-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            padding: 1rem;
+
+            border: 1px solid gray;
+        }
+
+        .dropdown-toggle:active {
+            color: gray;
+        }
+
+        .dropdown-item {
+            padding: 1rem;
+        }
+
+        .active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <section class="nav-links">
+                <div class="nav-link-item dropdown-toggle" id="country-dropdown-toggle"><span>Countries</span>
+                    <div class="country-dropdown-menu">
+                    </div>
+                </div>
+
+                <div class="nav-link-item dropdown-toggle" id="books-dropdown-toggle"><span>Books</span>
+                    <div class="books-dropdown-menu">
+                    </div>
+                </div>
+            </section>
+            <section class="login-register">
+                <div class="login-register-item login">Log in</div>
+                <div class="login-register-item register"> Sign Up</div>
+            </section>
+        </nav>
+    </header>
+</body>
+<script>
+    let dropdownTriggered = false;
+    //TODO: fix bug: only one dropdown loads data because of the bool flag, 
+    //don't wanna create two flags tho, figure out a better way to solve this
+    const dropdownData = (parent) => {
+        const countryList = ["Amercia", "Bangladesh", "Canada", "Denmark", "England"]
+        const bookList = ["aMoL", "Babel", "Cold Days", "Deadhouse Gates", "Early Years"]
+        let iterator = []
+        if (parent.classList.contains("country-dropdown-menu")) {
+            iterator = countryList
+        }
+        else if (parent.classList.contains("books-dropdown-menu")) { iterator = bookList }
+        iterator.forEach(item => {
+            const child = document.createElement("div")
+            child.className = "dropdown-item"
+            child.textContent = item
+            parent.appendChild(child)
+        });
+    }
+
+
+    const toggleDropdown = (element) => {
+        const dropdownList = document.querySelectorAll(".country-dropdown-menu, .books-dropdown-menu")
+        dropdownList.forEach(dropdown => {
+            if (dropdown !== element) {
+                dropdown.classList.remove("active")
+            }
+        })
+        element.classList.toggle("active")
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+
+        const countryToggle = document.querySelector("#country-dropdown-toggle")
+        const countryDropdown = countryToggle.querySelector(".country-dropdown-menu")
+        countryToggle.addEventListener("click", () => {
+            if (!dropdownTriggered) {
+                dropdownData(countryDropdown)
+                dropdownTriggered = true;
+            }
+            toggleDropdown(countryDropdown)
+
+        })
+        const booksToggle = document.querySelector("#books-dropdown-toggle")
+        const booksDropdown = booksToggle.querySelector(".books-dropdown-menu")
+        booksToggle.addEventListener("click", () => {
+            if (!dropdownTriggered) {
+                dropdownData(booksDropdown)
+                dropdownTriggered = true;
+            }
+            toggleDropdown(booksDropdown)
+
+        })
+
+
+    })
+
+</script>
+
+</html>

@@ -40,6 +40,8 @@ header {
 nav{
     position: sticky;
     top: 0;
+    z-index: 100;
+    flex-wrap: wrap;
 }
 nav,
 .nav-links,
@@ -75,13 +77,8 @@ nav,
     cursor: pointer;
 }
 
-.dropdown-nav-link {
-    transition: color 0.2s;
-}
 
-.dropdown-nav-link:hover {
-    color: black;
-}
+
 
 .login-register {
     gap: 0.8rem;
@@ -169,6 +166,7 @@ nav,
     display: flex;
     justify-content: space-around;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .pricing-top{
@@ -204,6 +202,7 @@ nav,
     display: flex;
     justify-content: space-between;
     align-items: stretch;
+    flex-wrap: wrap;
 
     box-sizing: border-box;
     gap: 1rem;
@@ -218,12 +217,41 @@ nav,
 
     flex: 1;
 
-    /* height: 5rem; */
     background-color: #fbfcff;
 
-    /* border: 1px solid;  */
     box-shadow: 0 0 68px rgba(2,4,69,.08);
     border-radius: 0.2em;
 
 
+}
+
+.dropdown-nav-link {
+    position: relative;
+    transition: color 0.2s;
+}
+
+.dropdown-nav-link:hover {
+    color: black;
+}
+
+.product-dropdown-menu,
+.template-dropdown-menu{
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  top: 100%;
+  left: 0;
+  /* z-index: 1000; */
+}
+
+.dropdown-item{
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+
+.active{
+    display:block;
 }
