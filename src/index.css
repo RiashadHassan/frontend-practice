@@ -1,0 +1,25 @@
+@font-face {
+  font-family: 'Amerigo-bt roman opt';
+  src: url('https://db.onlinewebfonts.com/t/ab9e8eea3710ad4417e4a318556bc614.woff2') format('woff2'),
+    url('https://db.onlinewebfonts.com/t/ab9e8eea3710ad4417e4a318556bc614.ttf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+}
+
+:root {
+  font-size: 16px;
+  --primary-color: #00b289;
+  --secondary-font-family: 'Proximanova opt', sans-serif;
+  --secondary-font-color: #4c525a;
+  line-height: 16px;
+}
+
+body {
+  margin: 0 auto;
+  padding: 0;
+
+  height: 100vh;
+  overflow: auto;
+  box-sizing: border-box;
+  max-width: 1200px;
+}

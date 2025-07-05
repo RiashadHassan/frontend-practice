@@ -156,12 +156,12 @@ nav,
 
     box-sizing: border-box;
     position: relative;
-    
+
     width: 100%;
 
 }
 
-.pricing-top, 
+.pricing-top,
 .option-toggle-wrapper{
     display: flex;
     justify-content: space-around;
