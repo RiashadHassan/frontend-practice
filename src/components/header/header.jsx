@@ -1,6 +1,6 @@
 import NavBar from "./navbar"
 
-import "../../../static-frontend/css/bonsai.css"
+import "../../static/css/header.css"
 
 function Header() {
     return <header>

@@ -11,18 +11,18 @@
 <body>
     <header>
         <nav>
-            <img class="site-logo"
-                src="http://web.archive.org/web/20221117021711im_/https://assets-global.website-files.com/58868bcd2ef4daaf0f072900/5e5fd7c602ca7cd432feb68e_bonsai-logo.svg"
-                alt="site-logo" />
+            <img class="site-logo" data-src="logo" alt="site-logo" />
             <div class="nav-links">
-                <div class="nav-link-item dropdown-nav-link" id="product-dropdown-toggle">Product
+                <div class="nav-link-item dropdown-nav-link" id="product-dropdown-toggle">
+                    Product
                     <div class="product-dropdown-menu">
                         <div class="dropdown-item">Time Tracking</div>
                         <div class="dropdown-item">Invoicing</div>
                         <div class="dropdown-item">Contracts</div>
                     </div>
                 </div>
-                <div class="nav-link-item dropdown-nav-link" id="template-dropdown-toggle">Templates
+                <div class="nav-link-item dropdown-nav-link" id="template-dropdown-toggle">
+                    Templates
                     <div class="template-dropdown-menu">
                         <div class="dropdown-item">Invoice Template</div>
                         <div class="dropdown-item">Contract Template</div>
@@ -38,40 +38,186 @@
         </nav>
     </header>
     <main>
-
-        <!-- <section class="backdrop-container">
+        <section class="backdrop-container">
             <div class="backdrop-blue"></div>
-        </section> -->
+        </section>
         <section class="pricing-container">
             <section class="pricing-top">
                 <h1 class="primary-text">Plans & Pricing</h1>
                 <div class="option-toggle-wrapper">
                     <h4 class="option-toggle-monthly">MONTHLY</h4>
-                    <button class="option-toggle-button">Button</button>
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider"></span>
+                    </label>
                     <h4 class="option-toggle-yearly">Yearly</h4>
                 </div>
             </section>
             <section class="pricing-card-wrapper">
                 <div class="pricing-card starter-card">
-                    <div>Starter</div>
-                    <div>Sssssssssssssssssssstarter</div>
-                    <div>Starter</div>
-                    <div>Starter</div>
-                    <div>Starter</div>
-                    <div>Starter</div>
-                    <div>Starter</div>
+                    <div class="pc-title">Starter</div>
+                    <div class="pc-description">
+                        Ideal for freelancers and contractors <br> just starting out
+                    </div>
+                    <section class="pricing-wrapper">
+                        <span class="currency-symbol">$</span>
+                        <span class="amount">24</span>
+                        <span class="time-period">/MONTH</span>
+                    </section>
+
+                    <div class="plan-features">
+                        <div class="tick-wrapper">
+                            <img data-src="tick" alt="" />
+                            <div class="feature-text">All Templates</div>
+                        </div>
+                        <div class="tick-wrapper">
+                            <img data-src="tick" alt="" />
+                            <div class="feature-text">Unlimited Clients & Projects</div>
+                        </div>
+                        <div class="tick-wrapper">
+                            <img data-src="tick" alt="" />
+                            <div class="feature-text">Invoicing & Payments</div>
+                        </div>
+                        <div class="tick-wrapper">
+                            <img data-src="tick" alt="" />
+                            <div class="feature-text">Proposals & Contracts</div>
+                        </div>
+                        <div class="tick-wrapper">
+                            <img data-src="tick" alt="" />
+                            <div class="feature-text">Tasks & Time Tracking</div>
+                        </div>
+                        <div class="tick-wrapper">
+                            <img data-src="tick" alt="" />
+                            <div class="feature-text">Client CRM</div>
+                        </div>
+                        <div class="tick-wrapper">
+                            <img data-src="tick" alt="" />
+                            <div class="feature-text">Expense Tracking</div>
+                        </div>
+                        <div class="tick-wrapper">
+                            <img data-src="tick" alt="" />
+                            <div class="feature-text">Up to 5 Project Collaborators</div>
+                        </div>
+                    </div>
+                    <div class="pc-start">START FREE</div>
                 </div>
                 <div class="pricing-card professional-card">
-                    <div>Starter</div>
-                    <div>Starter</div>
+                    <div class="pc-title">Professional</div>
+                    <div class="pc-description">
+                        Everything a growing independent <br> business needs to thrive.
+                    </div>
+                    <section class="pricing-wrapper">
+                        <span class="currency-symbol">$</span>
+                        <span class="amount">39</span>
+                        <span class="time-period">/MONTH</span>
+                    </section>
+
+                    <div class="plan-features">
+                        <div class="tick-wrapper">
+                            <img data-src="tick" alt="" />
+                            <div class="feature-text">Everything in Starter plus...</div>
+                        </div>
+                        <div class="tick-wrapper">
+                            <img data-src="tick" alt="" />
+                            <div class="feature-text">Custom Branding</div>
+                        </div>
+                        <div class="tick-wrapper">
+                            <img data-src="tick" alt="" />
+                            <div class="feature-text">Forms & Questionnaires</div>
+                        </div>
+                        <div class="tick-wrapper">
+                            <img data-src="tick" alt="" />
+                            <div class="feature-text">Workflow Automations</div>
+                        </div>
+                        <div class="tick-wrapper">
+                            <img data-src="tick" alt="" />
+                            <div class="feature-text">Client Portal</div>
+                        </div>
+                        <div class="tick-wrapper">
+                            <img data-src="tick" alt="" />
+                            <div class="feature-text">QuickBooks Integration</div>
+                        </div>
+                        <div class="tick-wrapper">
+                            <img data-src="tick" alt="" />
+                            <div class="feature-text">Calendly Integration</div>
+                        </div>
+                        <div class="tick-wrapper">
+                            <img data-src="tick" alt="" />
+                            <div class="feature-text">Zapier Integration</div>
+                        </div>
+                        <div class="tick-wrapper">
+                            <img data-src="tick" alt="" />
+                            <div class="feature-text">Up to 15 Project Collaborators</div>
+                        </div>
+                    </div>
+                    <div class="pc-start">START FREE</div>
 
                 </div>
-                <div class="pricing-card business-card">Business</div>
+                <div class="pricing-card business-card">
+                    <div class="pc-title">Business</div>
+                    <div class="pc-description">
+                        The perfect package for small <br> businesses and agencies.
+                    </div>
+                    <section class="pricing-wrapper">
+                        <span class="currency-symbol">$</span>
+                        <span class="amount">79</span>
+                        <span class="time-period">/MONTH</span>
+                    </section>
 
+                    <div class="plan-features">
+                        <div class="tick-wrapper">
+                            <img data-src="tick" alt="" />
+                            <div class="feature-text">
+                                Everything in Starter and <br>Professional plus...
+                            </div>
+                        </div>
+                        <div class="tick-wrapper">
+                            <img data-src="tick" alt="" />
+                            <div class="feature-text">Subcontractor Management</div>
+                        </div>
+                        <div class="tick-wrapper">
+                            <img data-src="tick" alt="" />
+                            <div class="feature-text">
+                                Hiring Agreement Templates (1099 contracts)
+                            </div>
+                        </div>
+                        <div class="tick-wrapper">
+                            <img data-src="tick" alt="" />
+                            <div class="feature-text">Subcontractor Onboarding</div>
+                        </div>
+                        <div class="tick-wrapper">
+                            <img data-src="tick" alt="" />
+                            <div class="feature-text">Talent Pool</div>
+                        </div>
+                        <div class="tick-wrapper">
+                            <img data-src="tick" alt="" />
+                            <div class="feature-text">
+                                3 Team Seats (additional seats $9/month)
+                            </div>
+                        </div>
+                        <div class="tick-wrapper">
+                            <img data-src="tick" alt="" />
+                            <div class="feature-text">Accountant Access</div>
+                        </div>
+                        <div class="tick-wrapper">
+                            <img data-src="tick" alt="" />
+                            <div class="feature-text">Connect Multiple Bank Accounts</div>
+                        </div>
+                        <div class="tick-wrapper">
+                            <img data-src="tick" alt="" />
+                            <div class="feature-text">Unlimited Subcontractors</div>
+                        </div>
+                        <div class="tick-wrapper">
+                            <img data-src="tick" alt="" />
+                            <div class="feature-text">Unlimited Project Collaborators</div>
+                        </div>
+                    </div>
+                    <div class="pc-start">START FREE</div>
+                </div>
             </section>
         </section>
     </main>
-    <script src="../js/bonsai.js"> </script>
-
+    <script src="../js/bonsai.js"></script>
 </body>
+
 </html>

@@ -1,0 +1,259 @@
+@font-face {
+    font-family: 'Amerigo-bt roman opt';
+    src: url('https://db.onlinewebfonts.com/t/ab9e8eea3710ad4417e4a318556bc614.woff2') format('woff2'),
+         url('https://db.onlinewebfonts.com/t/ab9e8eea3710ad4417e4a318556bc614.ttf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
+  }
+  
+  :root {
+      font-size: 16px;
+      --primary-color: #00b289;
+      --secondary-font-family: 'Proximanova opt', sans-serif;
+      --secondary-font-color: #4c525a;
+      line-height: 1.5;
+  }
+  
+  body {     
+      margin: auto;
+      padding: 0;
+
+      height: 100vh;
+      overflow: auto;
+      box-sizing: border-box;
+      max-width: 1200px;
+  }
+  main{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  
+      box-sizing: border-box;
+      padding: 0.7rem 6.5rem;
+  
+      width: 100%;
+  
+  }
+  header {
+      padding: 0.7rem 6.5rem;
+  }
+  nav{
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      flex-wrap: wrap;
+  }
+  nav,
+  .nav-links,
+  .nav-link-item,
+  .login-register {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      align-content: center;
+
+      flex-wrap: wrap;
+  }
+  
+  .site-logo {
+      height: 1.8rem;
+      width: auto;
+      margin-right: 8rem;
+  }
+  
+  .nav-links {
+      color: var(--secondary-font-color);
+  
+      font-size: 0.9rem;
+      font-family: var(--secondary-font-family);
+  
+      padding-right: 1rem;
+      gap: 1.2rem;
+  }
+  
+  .nav-link-item {
+      padding: 1rem;
+  }
+  
+  .nav-link-item:hover {
+      cursor: pointer;
+  }
+  
+  
+  
+  
+  .login-register {
+      gap: 0.8rem;
+  }
+  
+  .login-button,
+  .start-button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  
+      font-size: 0.65rem;
+      font-weight: 700;
+      font-family: var(--secondary-font-family);
+  
+      cursor: pointer;
+  
+  }
+  
+  .login-button {
+      min-height: 2.2rem;
+  
+      background-color: white;
+      color: var(--primary-color);
+  
+      padding: 0.1rem 1rem;
+      border: 1px solid var(--primary-color);
+      border-radius: 0.2rem;
+  
+      transition: background-color 0.1s;
+  }
+  
+  .login-button:hover {
+      background-color: var(--primary-color);
+      color: white;
+  }
+  
+  
+  .start-button {
+      min-height: 2.2rem;
+  
+      background-color: var(--primary-color);
+      color: white;
+  
+      padding: 0.1rem 1rem;
+      border: 1px solid var(--primary-color);
+      border-radius: 0.2rem;
+  
+      transition: background-color 0.1s;
+  }
+  
+  .start-button:hover {
+      background-color: #068567;
+  }
+  .backdrop-container{
+      position: absolute;
+  }
+  .backdrop-blue {
+      height: 100rem;
+      width: 200rem;
+  
+      background-color: var(--primary-color);
+      opacity: 0.18;
+  
+      transform: translate(270px, -590px) rotate(-40.5deg);
+  
+      z-index: -10;
+  }
+  
+  .pricing-container{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+  
+      box-sizing: border-box;
+      position: relative;
+  
+      width: 100%;
+  
+  }
+  
+  .pricing-top,
+  .option-toggle-wrapper{
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-wrap: wrap;
+  }
+  
+  .pricing-top{
+      width: 100%;
+      /* margin: 3rem 5rem 0; */
+      padding: 0 3rem;
+      overflow: hidden;
+  }
+  
+  .primary-text{
+      box-sizing: border-box;
+      color: var(--secondary-font-color);
+      font-size: 2.5rem;
+      font-family: 'Amerigo-bt roman opt', sans-serif;
+      padding: 0;
+      margin: 0;
+      line-height: 2.5rem;
+  }
+  .option-toggle-wrapper{
+      width: 30%;
+      justify-content: space-between;
+  
+  }
+  .option-toggle-monthly{
+      font-size: 1.063rem;
+      color: var(--secondary-font-color);
+  }
+  .option-toggle-yearly{
+      font-size: 1rem;
+      color: #4c525a;
+  }
+  .pricing-card-wrapper{
+      display: flex;
+      justify-content: space-between;
+      align-items: stretch;
+      flex-wrap: wrap;
+  
+      box-sizing: border-box;
+      gap: 1rem;
+      width: 100%;
+  
+      padding: 2rem 0rem;
+  }
+  .pricing-card{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  
+      flex: 1;
+  
+      background-color: #fbfcff;
+  
+      box-shadow: 0 0 68px rgba(2,4,69,.08);
+      border-radius: 0.2em;
+  
+  
+  }
+  
+  .dropdown-nav-link {
+      position: relative;
+      transition: color 0.2s;
+  }
+  
+  .dropdown-nav-link:hover {
+      color: black;
+  }
+  
+  .product-dropdown-menu,
+  .template-dropdown-menu{
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 0.5rem;
+    top: 100%;
+    left: 0;
+    /* z-index: 1000; */
+  }
+  
+  .dropdown-item{
+    padding: 0.5rem;
+    cursor: pointer;
+  }
+  
+  
+  .active{
+      display:block;
+  }
