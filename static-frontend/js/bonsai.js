@@ -1,4 +1,5 @@
 const IMAGE_SRC = {
+  dropdown_logo: "http://web.archive.org/web/20221117021714im_/https://assets-global.website-files.com/58868bcd2ef4daaf0f072900/59f05f389cd27200014f061e_icon-expand.png",
   logo: "https://assets-global.website-files.com/58868bcd2ef4daaf0f072900/5e5fd7c602ca7cd432feb68e_bonsai-logo.svg",
   tick: "https://assets-global.website-files.com/58868bcd2ef4daaf0f072900/5e668ac7510abc1d0f5c1c14_green-tick.svg",
 };

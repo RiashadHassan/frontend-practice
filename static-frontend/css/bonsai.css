@@ -11,12 +11,13 @@
     src: url('../fonts/Fontspring-DEMO-proximanova-regular.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
-  }
-  
+}
+
 
 :root {
     font-size: 16px;
     --primary-color: #00b289;
+    --secondary-color: rgb(242, 250, 255);
     --secondary-font-family: 'Proxima Nova', sans-serif;
     --secondary-font-color: #4c525a;
     line-height: 16px;
@@ -25,7 +26,8 @@
 body {
     display: flex;
     flex-direction: column;
-    align-items: center;;
+    align-items: center;
+    ;
     position: relative;
     overflow: hidden;
 
@@ -38,6 +40,8 @@ body {
 }
 
 main {
+    position: relative;
+
     max-width: 1200px;
 
     display: flex;
@@ -67,7 +71,7 @@ header {
 
 nav {
     margin: 0 auto;
-    
+
     max-width: 1000px;
     flex-wrap: wrap;
 }
@@ -80,6 +84,7 @@ nav,
     justify-content: space-between;
     align-items: center;
     align-content: center;
+    flex-wrap: wrap; /* Added flex-wrap */
 }
 
 .site-logo {
@@ -162,27 +167,24 @@ nav,
 }
 
 .start-button:hover,
-.pc-start:hover {
+.pc-start:hover,
+.business-start-button:hover {
     background-color: #068567;
 }
 
-.backdrop-container {
-    position: absolute;
-    /* overflow: hidden; */
-    width: 100%;
-}
-
 .backdrop-blue {
-    height: 80rem;
-    width: 700rem;
+    position: absolute;
+    top: 0;
+    right: 0;
 
-    background-color: var(--primary-color);
-    opacity: 0.08;
+    height: 60rem;
+    width: 100%;
 
-    transform: translate(-40rem, -235em) rotate(-40.5deg);
+    background-color: var(--secondary-color);
+
+    transform: translate(15rem, -31rem) rotate(-40deg);
     z-index: -10;
 
-    /* border-radius: 12rem; */
     border-bottom-left-radius: 12rem;
 }
 
@@ -290,12 +292,10 @@ input:checked+.slider::before {
     display: flex;
     justify-content: space-between;
     align-items: stretch;
-    flex-wrap: wrap;
-
+    flex-wrap: wrap; /* Added flex-wrap */
     box-sizing: border-box;
     gap: 1rem;
     width: 100%;
-
     padding: 2rem 0rem;
 
 }
@@ -483,6 +483,7 @@ input:checked+.slider::before {
 .active {
     display: block;
 }
+
 .add-on-container {
     display: flex;
     flex-direction: column;
@@ -493,19 +494,21 @@ input:checked+.slider::before {
     margin: 4.2rem 0 0 0;
 
 }
-.add-on-title{
+
+.add-on-title {
     line-height: 2rem;
 
     font-size: 2rem;
     font-family: 'Amerigo-bt roman opt';
-    
+
     color: var(--secondary-font-color);
     margin-bottom: 2.5rem;
 }
-.add-on-card-wrapper{
+
+.add-on-card-wrapper {
     display: flex;
     flex-direction: column;
-
+    flex-wrap: wrap; /* Added flex-wrap */
     min-width: 1000px;
     max-width: 1200px;
     box-sizing: border-box;
@@ -513,7 +516,7 @@ input:checked+.slider::before {
 
 }
 
-.add-on-card{
+.add-on-card {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -523,34 +526,176 @@ input:checked+.slider::before {
     line-height: 1.5rem;
 
     box-shadow: 0 0 68px rgba(2, 4, 69, .08);
-    border-radius: 0.2rem ;
+    border-radius: 0.2rem;
 
-    font-family: var(--secondary-font-family);
+    font-family: "amerigo-bt roman opt", sans-serif;
 }
 
-.add-on-card-text{
+.add-on-card-text {
     display: flex;
     flex-direction: column;
 }
 
-.add-on-card-title{
+.add-on-card-title {
     color: var(--secondary-font-color);
 
     font-size: 1.37rem;
     font-weight: bold;
 }
 
-.add-on-card-description{
+.add-on-card-description {
     color: var(--secondary-font-color);
     font-size: 1rem;
 }
 
-.add-on-card-price{
+.add-on-card-price {
     color: var(--secondary-font-color);
+    font-size: 2.6rem;
+    font-weight: bold;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    min-width:6rem ;
+    min-height: 4rem;
+
+    line-height: 1.2;
+}
+
+.add-on-card-price-month{
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #4c4d5f;
+    margin-left: 0.2rem;
+}
+
+.business-wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    margin: 5rem 0;
+    padding: 3.5rem 2.8rem;
+
+    min-height: 7rem;
+    width: 80%;
+    background-color: var(--secondary-color);
+
+    border-radius: 0.2rem;
+
+}
+
+.left-side-text{
+    font-family: "Amerigo-bt roman opt";
+    font-size: 2.4rem;
+    line-height: 2.7rem;
+
+    color: var(--secondary-font-color);
+
+}
+.left-side-text span{
+    color: var(--primary-color);
+}
+
+.business-start-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-weight: 700;
+    font-family: var(--secondary-font-family);
+
+    cursor: pointer;
+
+    min-height: 2.2rem;
+
+    background-color: var(--primary-color);
+    color: white;
+
+    font-size: 0.8rem;
+
+    line-height: 1.5rem;
+    letter-spacing: 0.1rem;
+    padding: 0.4rem 1rem;
+    border: 1px solid var(--primary-color);
+    border-radius: 0.2rem;
+
+
+    transition: background-color 0.1s;
+}
+
+.faq-container{
+    display:flex ;
+    flex-direction: column;
+    justify-content: center;
+
+    width: 80%;
+    box-sizing: border-box;
+}
+
+.faq-title{
+    font-family: "proxima nova", sans-serif;
+    font-size: 1.8rem;
+    font-weight: bolder;
+
+    line-height: 2.5rem;
+
+    color: var(--primary-color);
+    margin: 0 0rem 2rem 0rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.faq-question-wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+.faq-question{
+    font-family: "proxima nova", sans-serif;
     font-size: 1.6rem;
     font-weight: bold;
 
-    display: flex ;
-    justify-content: center;
-    align-self: center;
+    color: var(--secondary-font-color);
+    transition: 0.2s color;
+}
+.faq-question-wrapper:hover .faq-question{
+    cursor: pointer;
+    color: var(--primary-color);
+}
+
+.faq-question-wrapper img{
+    height: 0.8rem;
+    width: 0.8rem;
+}
+
+footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+
+    min-width: 1000px;
+
+    margin: 5rem auto;
+}
+
+.footer-title{
+    padding: 2rem 0;
+
+    font-family: var(--secondary-font-family);
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--secondary-font-color);
+
+}
+
+.footer-link{
+    font-family: var(--secondary-font-family);
+    padding: 0.5rem 0;
 }
