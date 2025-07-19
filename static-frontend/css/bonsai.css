@@ -29,13 +29,13 @@ body {
     align-items: center;
     ;
     position: relative;
-    overflow: hidden;
+    overflow-x: hidden;
 
     margin: 0;
     padding: 0;
 
     height: 100vh;
-    overflow: auto;
+    width: 100vw;
     box-sizing: border-box;
 }
 
@@ -84,7 +84,8 @@ nav,
     justify-content: space-between;
     align-items: center;
     align-content: center;
-    flex-wrap: wrap; /* Added flex-wrap */
+    flex-wrap: wrap;
+    /* Added flex-wrap */
 }
 
 .site-logo {
@@ -292,7 +293,8 @@ input:checked+.slider::before {
     display: flex;
     justify-content: space-between;
     align-items: stretch;
-    flex-wrap: wrap; /* Added flex-wrap */
+    flex-wrap: wrap;
+    /* Added flex-wrap */
     box-sizing: border-box;
     gap: 1rem;
     width: 100%;
@@ -508,7 +510,8 @@ input:checked+.slider::before {
 .add-on-card-wrapper {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap; /* Added flex-wrap */
+    flex-wrap: wrap;
+    /* Added flex-wrap */
     min-width: 1000px;
     max-width: 1200px;
     box-sizing: border-box;
@@ -558,24 +561,24 @@ input:checked+.slider::before {
     justify-content: center;
     align-items: center;
 
-    min-width:6rem ;
+    min-width: 6rem;
     min-height: 4rem;
 
     line-height: 1.2;
 }
 
-.add-on-card-price-month{
+.add-on-card-price-month {
     font-size: 1.2rem;
     font-weight: 400;
     color: #4c4d5f;
     margin-left: 0.2rem;
 }
 
-.business-wrapper{
+.business-wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    
+
     margin: 5rem 0;
     padding: 3.5rem 2.8rem;
 
@@ -587,7 +590,7 @@ input:checked+.slider::before {
 
 }
 
-.left-side-text{
+.left-side-text {
     font-family: "Amerigo-bt roman opt";
     font-size: 2.4rem;
     line-height: 2.7rem;
@@ -595,7 +598,8 @@ input:checked+.slider::before {
     color: var(--secondary-font-color);
 
 }
-.left-side-text span{
+
+.left-side-text span {
     color: var(--primary-color);
 }
 
@@ -626,8 +630,8 @@ input:checked+.slider::before {
     transition: background-color 0.1s;
 }
 
-.faq-container{
-    display:flex ;
+.faq-container {
+    display: flex;
     flex-direction: column;
     justify-content: center;
 
@@ -635,7 +639,7 @@ input:checked+.slider::before {
     box-sizing: border-box;
 }
 
-.faq-title{
+.faq-title {
     font-family: "proxima nova", sans-serif;
     font-size: 1.8rem;
     font-weight: bolder;
@@ -651,13 +655,14 @@ input:checked+.slider::before {
 }
 
 
-.faq-question-wrapper{
+.faq-question-wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
 }
-.faq-question{
+
+.faq-question {
     font-family: "proxima nova", sans-serif;
     font-size: 1.6rem;
     font-weight: bold;
@@ -665,37 +670,47 @@ input:checked+.slider::before {
     color: var(--secondary-font-color);
     transition: 0.2s color;
 }
-.faq-question-wrapper:hover .faq-question{
+
+.faq-question-wrapper:hover .faq-question {
     cursor: pointer;
     color: var(--primary-color);
 }
 
-.faq-question-wrapper img{
+.faq-question-wrapper img {
     height: 0.8rem;
     width: 0.8rem;
 }
 
-footer{
+footer {
     display: flex;
     justify-content: space-between;
     align-items: stretch;
 
     min-width: 1000px;
 
-    margin: 5rem auto;
+    padding: 5rem;
 }
 
-.footer-title{
+.footer-title {
     padding: 2rem 0;
 
     font-family: var(--secondary-font-family);
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: bold;
     color: var(--secondary-font-color);
 
 }
 
-.footer-link{
+.footer-link {
     font-family: var(--secondary-font-family);
+    color: #4c4d5f;
     padding: 0.5rem 0;
+    opacity: 0.8;
+    transition: color 0.2s, opacity 0.1s;
+}
+
+.footer-link:hover {
+    opacity: 1;
+    cursor: pointer;
+    color: var(--secondary-font-color)
 }

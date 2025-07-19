@@ -48,3 +48,6 @@ document.addEventListener("DOMContentLoaded", () => {
     toggleDropdown(templateDropdown);
   });
 });
+
+
+//TODO: remove toggle dropdown when clicking outside and use DRY in domcontentLoaded
